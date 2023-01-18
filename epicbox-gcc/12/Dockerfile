@@ -1,11 +1,11 @@
 FROM ubuntu:lunar
 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV CPP_LD_FLAGS='-lcurl -ljsoncpp'
+ENV CPP_LD_FLAGS='-I/usr/include -I/usr/include/jsoncpp -lcurl -ljsoncpp'
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        g++-12=12.2.0-9ubuntu1 libcurl4=7.86.0-2 libcurl4-gnutls-dev=7.86.0-2 \
+        g++-12 libcurl4=7.86.0-2 libcurl4-gnutls-dev=7.86.0-2 \
         libjsoncpp-dev=1.9.5-4 libjsoncpp25=1.9.5-4 \
     && rm -rf /var/lib/apt/lists/*
 
